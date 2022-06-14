@@ -1,0 +1,33 @@
+---
+
+- name: manage webserver
+  hosts: appserver
+  remote_user: centos
+  gather_facts: false
+  become: true
+  vars:
+    service_name: httpd
+
+  tasks:
+  - name: install webserver
+    package:
+       name: "{{ package_name }}"
+       state: present
+
+  - name: manage service
+    service:
+       name: "{{ service_name }}"
+       state: started
+
+- name: manage users
+  hosts: jenkins
+  remote_user: centos
+  become: true
+  vars:
+    user_name: ganeshhp
+
+  tasks:
+  - name: manage users
+    user:
+       name: "{{ user_name }}"
+       state: present
