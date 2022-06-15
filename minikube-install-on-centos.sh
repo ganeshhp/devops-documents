@@ -1,3 +1,4 @@
+## Kubectl installation ##
 echo "download kubectl"
 
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -14,6 +15,7 @@ chmod +x ./kubectl
 mkdir -p ~/.local/bin
 mv ./kubectl ~/.local/bin/kubectl
 
+## Docker-CE installation ##
 
 echo "install yum utils"
 sudo yum install -y yum-utils
@@ -30,6 +32,8 @@ echo "start docker engine"
 sudo systemctl start docker
 sudo systemctl enable docker
 
+## Install dependencies ##
+
 echo "swapoff"
 swapoff -a
 
@@ -39,6 +43,8 @@ sudo yum install curl conntrack -y
 #echo "start and enable kubelet"
 #sudo yum install -y kubelet
 #sudo systemctl enable kubelet && sudo systemctl start kubelet
+
+## Download and Install Minikube ##
 
 echo "download minikube"
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
